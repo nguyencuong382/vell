@@ -36,9 +36,9 @@ Vell checks multiple files with specific extensions. To add more type of files:
 [spell]
 ...
 extensions =
-	    .html,
+	.html,
         .rst,
-	    README.md,
+	README.md,
 ...
 ```
 
@@ -62,8 +62,8 @@ To exclude paths you don't want vell to check spell:
 ...
 [path]
 exclude =
-	    .env,
-	    .vscode,
+	.env,
+	.vscode,
         __pycache__,
 ...
 ```
