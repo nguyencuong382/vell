@@ -3,7 +3,7 @@ import os
 import re
 
 PATH = '.'
-FILE_CONFIG = 'vell.ini'
+
 
 
 def in_(str_, exclude):
@@ -27,12 +27,22 @@ def str2array(str_):
     str_s = re.split('\n|,', str_)
     return [s for s in str_s if s]
 
+def check_config(file_config):
+    if not os.path.isfile(file_config):
+        print(f'{file_config} not found')
+        return False
+    return True
 
-if not os.path.isfile(FILE_CONFIG):
-    print(f'{FILE_CONFIG} not found')
-else:
+
+def get_config():
+    global PATH
+    file_config = os.path.join(PATH, 'vell.ini')
+
+    if not check_config(file_config):
+        return None
+
     config = configparser.ConfigParser()
-    config.read(FILE_CONFIG)
+    config.read(file_config)
 
     # Files will be checked spell
     exclude = str2array(config['path']['exclude'])
@@ -44,3 +54,9 @@ else:
 
     # Level ignore
     level_ignore = int(config['spell']['level_ignore'])
+
+    return {
+        'files': files,
+        'ignore_words': ignore_words,
+        'level_ignore': level_ignore
+    }

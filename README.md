@@ -19,6 +19,12 @@ pip install --upgrade vell
 vell
 ```
 
+Check spell on specific folder
+
+```
+vell ./test
+```
+
 ### Custom `vell.ini` config file
 
 Some misspelled words like 'my_var' are your definition and they appear many time, you can ignore them by theirs frequency of appearance

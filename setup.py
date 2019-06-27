@@ -6,7 +6,7 @@ with open("README.md", 'r') as fh:
 setup(
     name='vell',
     packages=find_packages(),
-    version='1.0.7',
+    version='1.0.5',
     license='MIT',
     description='Check spell for mutiple files in a project',
     author='nguyencuong382',
@@ -20,7 +20,7 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     entry_points={
-        'console_scripts': ['vell=vell.spell:check'],
+        'console_scripts': ['vell=vell.spell:main'],
     },
     classifiers=[  # Optional
         # How mature is this project? Common values are

@@ -1,7 +1,10 @@
 import re
-import config
+import sys
+
 from bs4 import BeautifulSoup
 from spellchecker import SpellChecker
+
+import config
 
 
 def removeHtmlTags2(page):
@@ -25,10 +28,17 @@ def string2words(str, ignore_words):
 
 
 def check():
+    cfg = config.get_config()
+
+    if not cfg:
+        return
+        
     history = dict()
     spell = SpellChecker()
 
-    for file_name in config.files:
+    
+
+    for file_name in cfg['files']:
         with open(file_name, 'r') as file:
             content = file.readline()
             index_line = 1
@@ -37,7 +47,7 @@ def check():
             while content:
                 index_line += 1
                 content = file.readline()
-                words = string2words(content, config.ignore_words)
+                words = string2words(content, cfg['ignore_words'])
                 misspelled = spell.unknown(words)
 
                 for word in misspelled:
@@ -46,7 +56,7 @@ def check():
                         count = history[word]['count']
                         count += 1
                         history[word]['count'] = count
-                        if count <= config.level_ignore:
+                        if count <= cfg['level_ignore']:
                             history[word]['paths'].append(
                                 f'{file_name}:{index_line}')
                     else:
@@ -60,7 +70,7 @@ def check():
     # Log all misspelled words with theirs path
     for word in sorted(history.keys()):
         info = history[word]
-        if info['count'] <= config.level_ignore:
+        if info['count'] <= cfg['level_ignore']:
             for path in info['paths']:
                 is_found_misspelled = True
                 print(f"{path}: {word}")
@@ -69,5 +79,7 @@ def check():
         print('Great! There are no misspelled word')
 
 
-if __name__ == "__main__":
+def main():
+    if len(sys.argv) > 1:
+        config.PATH = sys.argv[1]
     check()
