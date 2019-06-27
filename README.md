@@ -19,7 +19,7 @@ pip install --upgrade vell
 vell
 ```
 
-Check spell on specific folder
+Check spell on a specific folder
 
 ```bash
 vell ./test
