@@ -27,8 +27,8 @@ vell ./test
 
 ### Custom `vell.ini` config file
 
-Some misspelled words like 'my_var' are your definition and they appear many time, you can ignore them by theirs frequency of appearance
-In this case. I tell to vell if a word appear more than 5 times, they will be ignored
+Some misspelled words like 'my_var' are your definition and they appear many times, you can ignore them by theirs frequency of appearance
+In this case. I tell to vell if a word appears more than 5 times, it will be ignored
 
 ```ini
 [spell]
@@ -45,7 +45,7 @@ extensions =
     README.md,
 ```
 
-Some misspelled words like _html, env_ are keywords, you can ignore them when checking
+Some misspelled words like _html, env_ are keywords, you can ignore them when checking spell
 
 ```ini
 [spell]
