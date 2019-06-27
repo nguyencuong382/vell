@@ -13,7 +13,7 @@ pip install --upgrade vell
 ### Check spell
 
 1. Create `vell.ini` config file based on [vell.sample.ini](vell.sample.ini)
-2. Run the bello command to check spell:
+2. Run the bellow command to check spell:
 
 ```bash
 vell
